@@ -11,6 +11,7 @@ export default class MonsterInc extends Component {
     super();
     this.state = {
       monsters: [],
+      search: ''
     }
   }
 
@@ -21,11 +22,17 @@ export default class MonsterInc extends Component {
       .catch(error => console.log(error))
   };
 
+  onChange = e => {
+    this.setState({ search: e.target.value })
+  }
+
   render() {
-    const { monsters } = this.state;
+    const { monsters, search } = this.state;
+    const filter_monster = monsters.filter(monsters => monsters.name.toLowerCase().includes(search.toLowerCase()))
     return (
       <div>
-        <MonsterCard monsters={monsters} />
+        <input type='search' placeholder='search monster' onChange={this.onChange} />
+        <MonsterCard monsters={filter_monster} />
       </div>
     )
   }
