@@ -2,17 +2,15 @@ import React, { Component } from 'react'
 
 // Components
 import { MonsterCard } from './Monster_Card';
+import { SearchMonster } from './Search_Monster';
 
 // Css
 import '../css/monster_inc.css';
 
 export default class MonsterInc extends Component {
-  constructor() {
-    super();
-    this.state = {
-      monsters: [],
-      search: ''
-    }
+  state = {
+    monsters: [],
+    text: ''
   }
 
   componentDidMount() {
@@ -23,16 +21,18 @@ export default class MonsterInc extends Component {
   };
 
   onChange = e => {
-    this.setState({ search: e.target.value })
+    this.setState({ text: e.target.value })
   }
 
   render() {
-    const { monsters, search } = this.state;
-    const filter_monster = monsters.filter(monsters => monsters.name.toLowerCase().includes(search.toLowerCase()))
+    const { monsters, text } = this.state;
+    const search = text => data => data.name.toLowerCase().startsWith(text.toLowerCase()) || !text;
+    const monster = monsters.filter(search(text)).map(monster => monster);
+
     return (
       <div>
-        <input type='search' placeholder='search monster' onChange={this.onChange} />
-        <MonsterCard monsters={filter_monster} />
+        <SearchMonster onChange={this.onChange} />
+        <MonsterCard monsters={monster} />
       </div>
     )
   }

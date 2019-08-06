@@ -5,9 +5,9 @@ import { Monster } from './Monster';
 
 export const MonsterCard = ({ monsters }) => {
   return(
-    <div className='card-list'>
+    <div className='row no-gutters'>
       {monsters.map(({ id, name, email }) => (
-        <Monster key={id} name={name} id={id} email={email} />
+        <Monster key={id} name={name} email={email} />
       ))}
     </div>
   )
