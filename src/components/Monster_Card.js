@@ -1,9 +1,14 @@
 import React from 'react';
 
-export const MonsterCard = ({ name }) => {
+// Components
+import { Monster } from './Monster';
+
+export const MonsterCard = ({ monsters }) => {
   return(
     <div className='card-list'>
-      <h1>{name}</h1>
+      {monsters.map(({ id, name }) => (
+        <Monster key={id} name={name} />
+      ))}
     </div>
   )
 }

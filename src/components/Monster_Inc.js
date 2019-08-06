@@ -22,11 +22,10 @@ export default class MonsterInc extends Component {
   };
 
   render() {
-    const monster = this.state.monsters.map(({ id, name }) => <MonsterCard key={id} name={name} />)
-
+    const { monsters } = this.state;
     return (
       <div>
-        {monster}
+        <MonsterCard monsters={monsters} />
       </div>
     )
   }
