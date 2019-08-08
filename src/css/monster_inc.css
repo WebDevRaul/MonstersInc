@@ -1,6 +1,6 @@
 /* Monster */
 .robo-container {
-  background-color:  #95dada;
+  background-color:  #d295da;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 25px;
@@ -10,4 +10,8 @@
 }
 .robo-container:hover {
   transform: scale(1.05);
+}
+
+.image {
+  width: 80%;
 }
